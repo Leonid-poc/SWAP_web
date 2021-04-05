@@ -1,0 +1,35 @@
+#reg {
+    border-radius: 5px;
+    background-color: rgb(128, 128, 245);
+    color: #D57F0A;
+    transition: all 0.5s ease-in;
+}
+
+#log {
+    border-radius: 5px;
+    background-color: rgb(120, 243, 151);
+    color: #870C68;
+    transition: all 0.5s ease-in;
+}
+
+#reg:hover {
+    background-color: blueviolet;
+    color: #75D41D;
+    border-radius: 20px;
+}
+
+#reg:active {
+    background-color: rgb(47, 50, 207);
+    border-radius: 20px;
+}
+
+#log:hover {
+    background-color: green;
+    color: #FF7FFF;
+    border-radius: 20px;
+}
+
+#log:active {
+    background-color: rgb(118, 201, 41);
+    border-radius: 20px;
+}
