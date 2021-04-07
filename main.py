@@ -1,5 +1,7 @@
 from flask import Flask
+from datetime import datetime
 from flask import render_template, redirect, request
+from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 from flask_login import login_user
 from loginform import LoginForm
@@ -13,6 +15,21 @@ from flask_login import logout_user
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'yandexlyceum_secret_key'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db/main.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+db = SQLAlchemy(app)
+
+class Main(db.Model):
+    id_object = db.Column(db.Integer, primary_key=True)
+    caption = db.Column(db.String(300), nullable=False)
+    title = db.Column(db.String(100), nullable=False)
+    pictures = db.Column(db.Text, nullable=False)
+    date = db.Column(db.DateTime, default=datetime.utcnow)
+
+    def __repr__(self):
+        return f'<Main {self.id_object}>'
+
+
 
 login_manager = LoginManager()
 login_manager.init_app(app)
@@ -85,4 +102,4 @@ def logout():
 
 if __name__ == '__main__':
     db_session.global_init("db/blogs.db")
-    app.run(port=8080, host='127.0.0.1')
+    app.run(debug=True)

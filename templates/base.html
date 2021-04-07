@@ -11,16 +11,24 @@
 </head>
 <body>
 <header>
-    <nav class="navbar navbar-light bg-light">
-        <img src="/static/img/logo.png">
-        {% if current_user.is_authenticated %}
-        <a class="navbar-brand" href="/logout">{{ current_user.name }}</a>
-        {% else %}
-        <p>
-            <a class="btn btn-primary " href="/register">Зарегистрироваться</a>
-            <a class="btn btn-success" href="/login">Войти</a>
-        </p>
-        {% endif %}
+    <nav class="d-flex navbar navbar-light bg-light" style="background-color: rgb(218, 166, 24);">
+        <div class="p-2 flex-grow-1 bd-highlight">
+            <img src="/static/img/logo.png">
+        </div>
+        <div class="p-2 bd-highlight">
+            {% if current_user.is_authenticated %}
+            <ul class="nav nav-pills">
+                <li class="nav-item"><a href="/logout" class="nav-link active">{{ current_user.name }}</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">About</a></li>
+            </ul>
+            {% block foundation %}{% endblock %}
+            {% else %}
+            <p>
+                <a class="btn btn-primary " href="/register">Зарегистрироваться</a>
+                <a class="btn btn-success" href="/login">Войти</a>
+            </p>
+            {% endif %}
+        </div>
     </nav>
 </header>
 <!-- Begin page content -->
