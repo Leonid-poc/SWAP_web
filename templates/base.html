@@ -21,7 +21,6 @@
                 <li class="nav-item"><a href="/logout" class="nav-link active">{{ current_user.name }}</a></li>
                 <li class="nav-item"><a href="#" class="nav-link">About</a></li>
             </ul>
-            {% block foundation %}{% endblock %}
             {% else %}
             <p>
                 <a class="btn btn-primary " href="/register">Зарегистрироваться</a>
