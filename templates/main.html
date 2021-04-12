@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-md-3">
+        <div class="list-group">
+            <a href="#" class="list-group-item">Электроника</a>
+            <a href="#" class="list-group-item">Одежда, обувь и аксессуары</a>
+            <a href="#" class="list-group-item">Дом и сад</a>
+            <a href="#" class="list-group-item">Бытовая техника</a>
+            <a href="#" class="list-group-item">Спорт и отдых</a>
+            <a href="#" class="list-group-item">Строительство и ремонт</a>
+            <a href="#" class="list-group-item">Книги</a>
+            <a href="#" class="list-group-item">Автотовары</a>
+            <a href="#" class="list-group-item">Мебель</a>
+            <a href="#" class="list-group-item">Музыка и видео</a>
+        </div>
+    </div>
+    <div class="col-md-8 products">
+        <div class="row">
+            <div class="col-sm-4">
+                {% for i in range(3) %}
+                <div class="product">
+                    <div class="product-img">
+                    </div>
+                    <p class="product-title">
+                        <a href="#">Название товара</a>
+                    </p>
+                    <p class="product-desc">Описание</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
