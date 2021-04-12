@@ -19,6 +19,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db/main.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
+
 class Main(db.Model):
     id_object = db.Column(db.Integer, primary_key=True)
     caption = db.Column(db.String(300), nullable=False)
@@ -28,7 +29,6 @@ class Main(db.Model):
 
     def __repr__(self):
         return f'<Main {self.id_object}>'
-
 
 
 login_manager = LoginManager()
@@ -83,7 +83,8 @@ def login():
     form = LoginForm()
     if form.validate_on_submit():
         db_sess = db_session.create_session()
-        user = db_sess.query(User).filter(User.email == form.email.data).first()
+        user = db_sess.query(User).filter(
+            User.email == form.email.data).first()
         if user and user.check_password(form.password.data):
             login_user(user, remember=form.remember_me.data)
             return redirect("/")
