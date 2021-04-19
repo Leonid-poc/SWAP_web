@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Добавление товара</h1>
+<form action="" method="post">
+    {{ form.hidden_tag() }}
+    <p>
+        {{ form.title.label }}<br>
+        {{ form.title(class="form-control") }}<br>
+        {% for error in form.title.errors %}
+    <p class="alert alert-danger" role="alert">
+        {{ error }}
+    </p>
+    {% endfor %}
+    </p>
+    <p>
+        {{ form.content.label }}<br>
+        {{ form.content(class="form-control") }}<br>
+        {% for error in form.content.errors %}
+    <p content="alert alert-danger" role="alert">
+        {{ error }}
+    </p>
+    {% endfor %}
+    </p>
+    <div>
+        <div class="form-group">
+            <label for="classSelect">Выберете категорию товара</label>
+            <select class="form-control" id="classSelect">
+                <option>Электроника</option>
+                <option>Одежда, обувь и аксессуары</option>
+                <option>Дом и сад</option>
+                <option>Бытовая техника</option>
+                <option>Спорт и отдых</option>
+                <option>Строительство и ремонт</option>
+                <option>Книги</option>
+                <option>Автотовары</option>
+                <option>Мебель</option>
+                <option>Музыка и видео</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="photo">Приложите фотографию</label>
+            <input type="file" class="form-control-file" id="photo" name="file">
+        </div>
+    </div>
+    <p>{{ form.submit(type="submit", class="btn btn-primary") }}</p>
+    {{message}}
+</form>
+{% endblock %}

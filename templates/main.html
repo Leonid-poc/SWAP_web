@@ -20,14 +20,14 @@
     <div class="col-md-8 products">
         <div class="row">
             <div class="col-sm-4">
-                {% for i in range(3) %}
+                {% for item in news%}
                 <div class="product">
                     <div class="product-img">
                     </div>
                     <p class="product-title">
-                        <a href="#">Название товара</a>
+                        <a href="#">{{item.title}}</a>
                     </p>
-                    <p class="product-desc">Описание</p>
+                    <p class="product-desc">{{item.content}}</p>
                 </div>
                 {% endfor %}
             </div>
