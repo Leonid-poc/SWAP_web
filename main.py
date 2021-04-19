@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, url_for
 from datetime import datetime
 from flask import render_template, redirect, request
 from flask_sqlalchemy import SQLAlchemy
@@ -44,12 +44,7 @@ def load_user(user_id):
 @app.route('/')
 def start():
     db_sess = db_session.create_session()
-    if current_user.is_authenticated:
-        news = db_sess.query(News).filter(
-            (News.user == current_user) | (News.is_private != True))
-    else:
-        news = db_sess.query(News).filter(News.is_private != True)
-    return render_template("index.html", news=news)
+    return render_template("base.html", title='TopSwap')
 
 
 @app.route('/register', methods=['GET', 'POST'])
@@ -99,6 +94,11 @@ def login():
 def logout():
     logout_user()
     return redirect("/")
+
+
+@app.route('/help')
+def help():
+    return render_template('main.html')
 
 
 if __name__ == '__main__':
