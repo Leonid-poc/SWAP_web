@@ -7,10 +7,43 @@
           href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
           crossorigin="anonymous">
+    <link rel="icon" href="/static/img/favicon.ico" type="image/x-icon">
     <title>{{title}}</title>
 </head>
 <body>
-<header>
+    <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom bg-primary">
+        <div class="container">
+          <div class="d-flex flex-wrap align-items-center justify-content-center">
+            <img src="/static/img/logo.png" alt="Упс))">
+      
+            <form class="d-flex">
+              <input type="search" class="form-control form-control-dark" placeholder="Search...">
+              <button style="margin-left: 10px;" class="btn btn-success" type="submit">Search</button>
+            </form>
+  
+            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+              <li><a href="#" class="nav-link px-2 text-warning">Home</a></li>
+              <li><a href="#" class="nav-link px-2 text-warning">About</a></li>
+            </ul>
+            {% if current_user.is_authenticated %}
+                <label class="nav-item"><a href="/logout" class="nav-link active" style="background-color: #FF8400;">{{ current_user.name }}</a></label>
+            {% else %}
+                <div>
+                    <a class="btn btn-outline-warning" href="/login" role="button">Login</a>
+                    <a class="btn btn-warning" href="/register" role="button">Sign-up</a>
+                </div>
+            {% endif %}
+          </div>
+        </div>
+      </header>
+<!-- Begin page content -->
+<main role="main" class="container">
+    {% block content %}{% endblock %}
+</main>
+</body>
+</html>
+<!--
+    <header>
     <nav class="d-flex navbar navbar-light bg-light" style="background-color: rgb(218, 166, 24);">
         <div class="p-2 flex-grow-1 bd-highlight">
             <img src="/static/img/logo.png">
@@ -18,7 +51,7 @@
         <div class="p-2 bd-highlight">
             {% if current_user.is_authenticated %}
             <ul class="nav nav-pills">
-                <li class="nav-item"><a href="/logout" class="nav-link active">{{ current_user.name }}</a></li>
+                <li class="nav-item"><a href="/logout" class="nav-link active"></a></li>
                 <li class="nav-item"><a href="#" class="nav-link">About</a></li>
             </ul>
             {% else %}
@@ -30,9 +63,30 @@
         </div>
     </nav>
 </header>
-<!-- Begin page content -->
-<main role="main" class="container">
-    {% block content %}{% endblock %}
-</main>
-</body>
-</html>
+-->
+
+
+<!--
+    <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom bg-primary">
+      <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-center">
+          <img src="/static/img/logo.png" alt="Упс))">
+    
+          <form class="d-flex">
+            <input type="search" class="form-control form-control-dark" placeholder="Search...">
+            <button style="margin-left: 10px;" class="btn btn-success" type="submit">Search</button>
+          </form>
+
+          <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+            <li><a href="#" class="nav-link px-2 text-warning">Home</a></li>
+            <li><a href="#" class="nav-link px-2 text-warning">About</a></li>
+          </ul>
+
+          <div>
+            <button type="button" class="btn btn-outline-light me-2">Login</button>
+            <button type="button" class="btn btn-warning">Sign-up</button>
+          </div>
+        </div>
+      </div>
+    </header>
+-->
