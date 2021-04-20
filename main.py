@@ -7,11 +7,14 @@ from flask_login import login_user
 from loginform import LoginForm
 from data import db_session
 from data.users import User
-from data.news import News
+from data.product import Product
 from forms.user import RegisterForm
 from flask_login import login_required
 from flask_login import current_user
 from flask_login import logout_user
+from flask_sqlalchemy import SQLAlchemy
+from datetime import datetime
+from forms.product import ProductForm
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'yandexlyceum_secret_key'
@@ -44,7 +47,9 @@ def load_user(user_id):
 @app.route('/')
 def start():
     db_sess = db_session.create_session()
-    return render_template("base.html", title='TopSwap')
+    if current_user.is_authenticated:
+        product = db_sess.query(Product).filter(Product.id == 2)
+    return render_template("main.html", title='TopSwap', a=product)
 
 
 @app.route('/register', methods=['GET', 'POST'])
@@ -101,6 +106,23 @@ def help():
     return render_template('main.html')
 
 
+@app.route('/product_add', methods=['GET', 'POST'])
+@login_required
+def add_news():
+    form = ProductForm()
+    if form.validate_on_submit():
+        db_sess = db_session.create_session()
+        product = Product(
+            title=form.title.data,
+            content=form.content.data,
+        )
+        db_sess.add(product)
+        db_sess.commit()
+        return redirect('/')
+    return render_template('product.html', title='Добавление записи',
+                           form=form)
+
+
 if __name__ == '__main__':
     db_session.global_init("db/blogs.db")
-    app.run(debug=True)
+    app.run(port=8080, host='127.0.0.1', debug=True)
