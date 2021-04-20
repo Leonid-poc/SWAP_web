@@ -1,35 +1,37 @@
-#reg {
+#developers {
+    width: 300px;
+    border-radius: 30px;
+}
+html {
+    height: 100%;
+}
+body {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+#content {
+    flex: 1 0 auto;
+}
+#pomeha {
+    width: 1915px;
+}
+.mb-1 {
+    width: max-content;
+    background: gold;
     border-radius: 5px;
-    background-color: rgb(128, 128, 245);
-    color: #D57F0A;
-    transition: all 0.5s ease-in;
+    animation: background 3s infinite alternate;
 }
-
-#log {
-    border-radius: 5px;
-    background-color: rgb(120, 243, 151);
-    color: #870C68;
-    transition: all 0.5s ease-in;
+footer {
+    padding: 50px;
 }
-
-#reg:hover {
-    background-color: blueviolet;
-    color: #75D41D;
-    border-radius: 20px;
-}
-
-#reg:active {
-    background-color: rgb(47, 50, 207);
-    border-radius: 20px;
-}
-
-#log:hover {
-    background-color: green;
-    color: #FF7FFF;
-    border-radius: 20px;
-}
-
-#log:active {
-    background-color: rgb(118, 201, 41);
-    border-radius: 20px;
-}
+.mb-1:hover {
+    width:fit-content;
+    background-color: rgb(70, 70, 255);
+    transition: all ease-in-out 0.5s;
+}   
+@keyframes background {
+    50% {
+      background: rgb(253, 75, 51);
+    }
+  }

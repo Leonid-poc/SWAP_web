@@ -8,6 +8,7 @@
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
           crossorigin="anonymous">
     <link rel="icon" href="/static/img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/static/css/style_button.css" type="text/css">
     <title>{{title}}</title>
 </head>
 <body>
@@ -23,10 +24,9 @@
   
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
               <li><a href="#" class="nav-link px-2 text-warning">Home</a></li>
-              <li><a href="#" class="nav-link px-2 text-warning">About</a></li>
             </ul>
             {% if current_user.is_authenticated %}
-                <label class="nav-item"><a href="/logout" class="nav-link active" style="background-color: #FF8400;">{{ current_user.name }}</a></label>
+                <label class="nav-item"><a href="/logout" class="nav-link active" style="background-color: #FF8400; border-radius: 15px;">{{ current_user.name }}</a></label>
             {% else %}
                 <div>
                     <a class="btn btn-outline-warning" href="/login" role="button">Login</a>
@@ -37,9 +37,33 @@
         </div>
       </header>
 <!-- Begin page content -->
-<main role="main" class="container">
+<main role="main" class="container" id='content'>
     {% block content %}{% endblock %}
 </main>
+<!-- End page content -->
+<footer class="pt-4 my-md-5 pt-md-5 bg-dark text-white" id="footer">
+  <div class="row"  id='pomeha'>
+    <div class="col-12 col-md">
+      <img class="mb-2" src="/static/img/favicon.ico" width="100px">
+    </div>
+    <div class="col-6 col-md">
+      <h5>Георг Леонид</h5>
+      <a href="https://vk.com/leonidus023" target="_blank"><img src="https://sun9-41.userapi.com/impg/C8Tj-WFaGMvgV6mDr-cMNhoedCdr7pfKzbOuhg/SAst6s2b3hs.jpg?size=1620x2160&quality=96&sign=18f492bb5d2b5c92deaf2752b1709879&type=album" id='developers' alt="упс))"></a>
+    </div>
+    <div class="col-6 col-md">
+      <h5>Анастасия Владимирцева</h5>
+      <a href="https://vk.com/id179477127" target="_blank"><img src="https://sun9-53.userapi.com/impg/c857632/v857632453/234fe4/SIl864eUHe4.jpg?size=1200x1600&quality=96&sign=b117395f8475a4f197b56612b4464748&type=album" id="developers" alt="упс))"></a>
+    </div>
+    <div class="col-6 col-md">
+      <h5>About</h5>
+      <ul class="list-unstyled text-small">
+        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Team</a></li>
+        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">FAQ</a></li>
+        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">About this project</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
 </body>
 </html>
 <!--
